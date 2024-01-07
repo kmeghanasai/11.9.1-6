@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+\title{Physics Assignment}
+\author{Karyampudi Meghana Sai\\ EE23BTECH11031}
+\maketitle
+
+\section*{Problem Statement}
+Write the first five terms of the sequence \(a_n = \frac{n(n^2+5)}{4}\).
+
+\section*{Solution}
+The sequence \(x(n) = \frac{n(n^2+5)}{4}\) starting from \(n = 0\) is:
+
+\begin{align*}
+x(0) &= \frac{0(0^2+5)}{4} = \frac{0}{4} = 0 \\
+x(1) &= \frac{1(1^2+5)}{4} = \frac{6}{4} = 1.5 \\
+x(2) &= \frac{2(2^2+5)}{4} = \frac{18}{4} = 4.5 \\
+x(3) &= \frac{3(3^2+5)}{4} = \frac{42}{4} = 10.5 \\
+x(4) &= \frac{4(4^2+5)}{4} = \frac{84}{4} = 21 \\
+x(5) &= \frac{5(5^2+5)}{4} = \frac{150}{4} = 37.5 \\
+\end{align*}
+
+
+The relation between x(n) and u(n):
+\begin{align}
+ x(n) = \frac{n^3 + 5n}{4} \cdot u(n) 
+ \end{align}
+
+The unit step function \(u(n)\) is defined as:
+\[ u(n) = \begin{cases} 0 & \text{if } n < 0 \\ 1 & \text{if } n \geq 0 \end{cases} \]
+
+The Z-transform of \(u(n)\), denoted as \(U(z)\), is calculated as follows:
+\begin{align}
+U(z) &= \mathcal{Z}\{u(n)\} = \sum_{n=0}^{\infty} u(n)z^{-n} \\
+U(z) &= \sum_{n=0}^{\infty} z^{-n} = 1 + z^{-1} + z^{-2} + z^{-3} + \dots \nonumber \\
+U(z) &= \frac{1}{1 - z^{-1}} = \frac{z}{z - 1} 
+\end{align}
+
+The Z-transform of \(u(n)\) is \(U(z) = \frac{1}{1 - z^{-1}}\). To find \(X(z)\) from \(U(z):\)
+\begin{align}
+Z\{n^k\}=\frac{z}{(z - 1)^{k+1}}
+\end{align}
+
+\begin{align}
+X(z) &= \mathcal{Z}\left\{\frac{n^3 + 5n}{4} \cdot u(n)\right\} \\
+&= \frac{1}{4} \cdot \mathcal{Z}\{n^3 + 5n\} \cdot U(z) \nonumber \\
+&= \frac{1}{4} \cdot \left(\frac{z}{(z - 1)^4} + \frac{5z}{(z - 1)^2}\right) \cdot U(z) \nonumber \\
+&= \frac{1}{4} \cdot \left(\frac{z}{(z - 1)^4} + \frac{5z}{(z - 1)^2}\right) \cdot \frac{1}{1 - z^{-1}} \nonumber \\
+&= \frac{1}{4} \cdot \left(\frac{z}{(z - 1)^4} + \frac{5z}{(z - 1)^2}\right) \cdot \frac{z}{z - 1} \nonumber \\
+X(z)&= \frac{1}{4} \cdot \frac{z^2}{(z - 1)^5} + \frac{5z^2}{4(z - 1)^3} 
+\end{align}
+
+This expression represents \(X(z)\) in terms of \(U(z)\), relating the \(z\)-domain representation of \(x(n)\) to that of \(u(n)\).
+
+\end{document}
+
